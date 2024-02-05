@@ -243,3 +243,49 @@
     }
   }
 }
+
+.pac-target-input {
+  width: 100%;
+  color: $dark-primary;
+
+  background: #fff;
+  border-radius: 8px;
+
+  border: 1px solid $dark-secondary;
+  padding: 10px;
+
+  @include mobile {
+    padding: 6px 10px;
+  }
+
+  @include input-value;
+  @include input-placeholder;
+
+  // Size
+
+  &--lg {
+    padding: 10px;
+  }
+
+  &--sm {
+    padding: 8px;
+
+    ::placeholder {
+      font-size: 14px;
+    }
+  }
+
+  // Variants
+
+  &--default {
+    border: 1px solid $dark-secondary;
+  }
+
+  &--accent {
+    border: 1px solid $accent-primary;
+  }
+
+  &:disabled {
+    @include disabled();
+  }
+}

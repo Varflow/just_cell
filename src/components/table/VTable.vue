@@ -8,7 +8,11 @@
     :class="{ 'table--empty': empty }"
   >
     <table-header :table="table" />
-    <table-body :table="table" v-if="!empty">
+    <table-body
+      :table="table"
+      v-if="!empty"
+      @row-click="(row) => $emit('row-click', row)"
+    >
       <template #context-menu="{ values }">
         <slot name="context-menu" :values="values"></slot>
       </template>
@@ -68,6 +72,7 @@ import TableEmpty from "./EmptyTable.vue";
 import VPagination from "../panigation/VPagination.vue";
 
 export default defineComponent({
+  emits: ["row-click"],
   components: {
     TableBody,
     TableHeader,

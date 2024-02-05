@@ -1,0 +1,70 @@
+import { Transport } from "../models/transport";
+
+export const getTransports = (): Transport[] => {
+  return [
+    {
+      id: "1",
+      route: "Маршрут 1",
+      transport_num: "091238",
+      name: "Богдан",
+      route_time: "10ч",
+      terminal_num: "1233213",
+      driver: "Тестов Тест Тестович",
+      geolocation: "Одесса",
+      drive_time: "4ч",
+      avg_speed: "120км/ч",
+      passenger_amount: 40,
+      payment_cash: "any",
+      payment_card: "any",
+      beneficiary_count: 20,
+      camera_link: "https://camera.com",
+      status: "string",
+      created_at: "2023-01-02",
+      next_to_date: "2024-01-02",
+    },
+    {
+      id: "2",
+      route: "Маршрут 2",
+      transport_num: "091238",
+      name: "Богдан",
+      route_time: "10ч",
+      terminal_num: "1233213",
+      driver: "Тестов Тест Тестович",
+      geolocation: "Одесса",
+      drive_time: "4ч",
+      avg_speed: "120км/ч",
+      passenger_amount: 40,
+      payment_cash: "any",
+      payment_card: "any",
+      beneficiary_count: 20,
+      camera_link: "https://camera.com",
+      status: "string",
+      created_at: "2023-01-02",
+      next_to_date: "2024-01-02",
+    },
+    {
+      id: "3",
+      route: "Маршрут 3",
+      transport_num: "091238",
+      name: "Богдан",
+      route_time: "10ч",
+      terminal_num: "1233213",
+      driver: "Тестов Тест Тестович",
+      geolocation: "Одесса",
+      drive_time: "4ч",
+      avg_speed: "120км/ч",
+      passenger_amount: 40,
+      payment_cash: "any",
+      payment_card: "any",
+      beneficiary_count: 20,
+      camera_link: "https://camera.com",
+      status: "string",
+      created_at: "2023-01-02",
+      next_to_date: "2024-01-02",
+    },
+  ];
+};
+
+export const createTransport = (payload: Transport) => {
+  console.log(payload);
+};

@@ -177,6 +177,45 @@ const routes: Array<RouteRecordRaw> = [
     path: "/Loyalty/Create",
     component: () => import("@/views/Loyalty/CreateLoyaltyView.vue"),
   },
+  {
+    path: "/Routes",
+    component: () => import("@/modules/routes/ui/RoutesIndex.vue"),
+  },
+  {
+    path: "/Routes/Create",
+    name: "createRoute",
+    component: () => import("@/modules/routes/ui/CreateRoute.vue"),
+  },
+  {
+    path: "/Route",
+    name: "showRoute",
+    component: () => import("@/modules/routes/ui/RouteShow.vue"),
+  },
+  {
+    path: "/Route/Update",
+    name: "updateRoute",
+    component: () => import("@/modules/routes/ui/RouteUpdate.vue"),
+  },
+  {
+    path: "/Transports",
+    name: "transportList",
+    component: () => import("@/modules/transports/ui/TransportsIndex.vue"),
+  },
+  {
+    path: "/Transports/Create",
+    name: "createTransport",
+    component: () => import("@/modules/transports/ui/CreateTransport.vue"),
+  },
+  {
+    path: "/Drivers",
+    name: "driversList",
+    component: () => import("@/modules/drivers/ui/DriversIndex.vue"),
+  },
+  {
+    path: "/Drivers/Create",
+    name: "createDriver",
+    component: () => import("@/modules/drivers/ui/CreateDriver.vue"),
+  },
 ];
 
 const router = createRouter({

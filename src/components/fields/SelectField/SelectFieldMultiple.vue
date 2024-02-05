@@ -157,9 +157,9 @@ export default defineComponent({
         .filter(({ value }: any) => selected.includes(value))
         .map((item: any) => item.label);
 
-      if (labels.length > 2) {
-        return `Selected ${labels.length}`;
-      }
+      // if (labels.length > 2) {
+      //   return `Selected ${labels.length}`;
+      // }
 
       return labels.join(",");
     },

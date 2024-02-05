@@ -1,5 +1,8 @@
 <template>
-  <form-field label="Термінали на які не поширюється знижка" :error="error">
+  <form-field
+    :label="label || 'Термінали на які не поширюється знижка'"
+    :error="error"
+  >
     <select-field
       :options="terminals"
       name="terminal"
@@ -20,6 +23,10 @@ export default defineComponent({
   props: {
     modelValue: String,
     error: String,
+    label: {
+      type: String,
+      required: false,
+    },
   },
   emits: ["update:modelValue"],
   components: {

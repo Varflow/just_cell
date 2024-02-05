@@ -11,6 +11,7 @@
       class="table-row"
       v-for="row in table.getRowModel().rows"
       :key="row.id"
+      @click="$emit('row-click', row)"
     >
       <div
         class="table-tr"
@@ -73,6 +74,7 @@ import { Table, FlexRender, Row } from "@tanstack/vue-table";
 import VContextMenu from "../contenxt-menu/VContextMenu.vue";
 
 export default defineComponent({
+  emits: ["row-click"],
   components: {
     VContextMenu,
   },

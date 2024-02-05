@@ -3,3 +3,4 @@ export const RULES_STORAGE_KEY = "user_roles";
 export const USER_STATE_KEY = "user";
 export const TOKEN_STORE_KEY = "token";
 export const MENU_STORE_KEY = "user_menu";
+export const ROUTE_STORAGE_KEY = "route";
