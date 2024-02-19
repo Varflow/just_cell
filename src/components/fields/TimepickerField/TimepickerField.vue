@@ -1,56 +1,59 @@
 <template lang="">
-  <div class="timepicker" ref="timepicker" v-click-outside="close">
-    <div class="timepicker-field" @click="toggle">
-      <input
-        type="text"
-        name="time"
-        class="timepicker-field__input"
-        v-model="time"
-        readonly
-      />
-    </div>
-    <div class="timepicker-dropdown" :class="{ opened: opened }">
-      <h4 class="timepicker-dropdown__title">Оберіть час</h4>
-      <div class="timepicker-dropdown__row">
-        <div class="timepicker-dropdown__values">
-          <div class="timepicker-dropdown__icon" @click="increment('hour')">
+  <form-field :label="label">
+    <div class="timepicker" ref="timepicker" v-click-outside="close">
+      <div class="timepicker-field" @click="toggle">
+        <input
+          type="text"
+          name="time"
+          class="timepicker-field__input"
+          v-model="time"
+          readonly
+        />
+      </div>
+      <div class="timepicker-dropdown" :class="{ opened: opened }">
+        <h4 class="timepicker-dropdown__title">Оберіть час</h4>
+        <div class="timepicker-dropdown__row">
+          <div class="timepicker-dropdown__values">
+            <div class="timepicker-dropdown__icon" @click="increment('hour')">
+              <img
+                src="@/assets/icons/chevron-top.svg"
+                alt="Top"
+                class="timepicker-dropdown__icon"
+              />
+            </div>
+            <div class="timepicker-dropdown__value">{{ formattedHour }}</div>
+            <div class="timepicker-dropdown__icon" @click="decrement('hour')">
+              <img
+                src="@/assets/icons/chevron-bottom.svg"
+                alt="Bottom"
+                class="timepicker-dropdown__icon"
+              />
+            </div>
+          </div>
+          <div class="timepicker-dropdown__delimetr">:</div>
+          <div class="timepicker-dropdown__values">
             <img
               src="@/assets/icons/chevron-top.svg"
               alt="Top"
               class="timepicker-dropdown__icon"
+              @click="increment('minuts')"
             />
-          </div>
-          <div class="timepicker-dropdown__value">{{ formattedHour }}</div>
-          <div class="timepicker-dropdown__icon" @click="decrement('hour')">
+            <div class="timepicker-dropdown__value">{{ formattedMinuts }}</div>
             <img
               src="@/assets/icons/chevron-bottom.svg"
               alt="Bottom"
               class="timepicker-dropdown__icon"
+              @click="decrement('minuts')"
             />
           </div>
         </div>
-        <div class="timepicker-dropdown__delimetr">:</div>
-        <div class="timepicker-dropdown__values">
-          <img
-            src="@/assets/icons/chevron-top.svg"
-            alt="Top"
-            class="timepicker-dropdown__icon"
-            @click="increment('minuts')"
-          />
-          <div class="timepicker-dropdown__value">{{ formattedMinuts }}</div>
-          <img
-            src="@/assets/icons/chevron-bottom.svg"
-            alt="Bottom"
-            class="timepicker-dropdown__icon"
-            @click="decrement('minuts')"
-          />
-        </div>
       </div>
     </div>
-  </div>
+  </form-field>
 </template>
 <script lang="ts">
 import { defineComponent } from "vue";
+import FormField from "../FormField/FormField.vue";
 
 const MAX_HOUR = 23;
 const MAX_MINUTS = 58;
@@ -61,7 +64,10 @@ const prepareTime = (value: number) => {
 
 export default defineComponent({
   emits: ["update:modelValue"],
-  props: ["modelValue"],
+  props: ["modelValue", "label"],
+  components: {
+    FormField,
+  },
   data() {
     return {
       opened: false,

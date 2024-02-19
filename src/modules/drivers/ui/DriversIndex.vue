@@ -3,11 +3,11 @@
     <template #appTitle>Водії</template>
     <template #appExtra>
       <div class="driver-actions-container">
-        <input-field name="search" placeholder="Пошук водія" v-model="query" />
         <create-driver-button />
       </div>
     </template>
     <template #appContent>
+      <driver-filters />
       <div class="drivers-list">
         <driver-card
           v-for="driver in driversForView"
@@ -21,8 +21,8 @@
 <script lang="ts">
 import AppLayout from "@/components/layout/AppLayout/AppLayout.vue";
 import DriverCard from "./DriverCard.vue";
-import InputField from "@/components/fields/InputField/InputField.vue";
 import CreateDriverButton from "./CreateDriverButton.vue";
+import DriverFilters from "./DriverFilters.vue";
 import { DriversActions } from "../store/drivers.store";
 import { defineComponent } from "vue";
 
@@ -30,8 +30,8 @@ export default defineComponent({
   components: {
     AppLayout,
     DriverCard,
-    InputField,
     CreateDriverButton,
+    DriverFilters,
   },
 
   data() {
@@ -57,20 +57,6 @@ export default defineComponent({
 
   mounted() {
     this.$store.dispatch(DriversActions.GET_DRIVERS);
-  },
-
-  watch: {
-    query: {
-      handler(value: string) {
-        this.searhDriver(value);
-      },
-    },
-  },
-
-  methods: {
-    searhDriver(query: string) {
-      this.$store.dispatch(DriversActions.SEARCH_DRIVER, { query });
-    },
   },
 });
 </script>

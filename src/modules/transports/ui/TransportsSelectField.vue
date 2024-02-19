@@ -43,7 +43,7 @@ export default defineComponent({
 
       const options = transports.map((transport) => ({
         value: transport.id,
-        label: transport.name,
+        label: transport.transport_num,
       }));
 
       options.push({ label: "Не вибрано", value: "" });

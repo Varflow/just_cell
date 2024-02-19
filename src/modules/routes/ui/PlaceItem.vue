@@ -1,7 +1,7 @@
 <template>
   <div class="place-item">
     <span class="place-item__text">{{ name }}</span>
-    <div class="place-item__actions">
+    <div class="place-item__actions" v-if="hasActions">
       <div
         class="place-item__action"
         :class="moveUpDisabled ? 'place-item__disabled' : ''"
@@ -28,7 +28,7 @@ import { defineComponent } from "vue";
 
 export default defineComponent({
   emits: ["move-up", "move-down", "remove"],
-  props: ["name", "index", "moveUpDisabled", "moveDownDisabled"],
+  props: ["name", "index", "moveUpDisabled", "moveDownDisabled", "hasActions"],
 });
 </script>
 

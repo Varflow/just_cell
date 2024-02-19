@@ -12,7 +12,7 @@
       </template>
     </v-protected> -->
   <router-link :to="{ name: 'createDriver' }" class="driver-create-btn">
-    <v-button :hasMaxWidth="false">
+    <v-button :hasMaxWidth="true">
       <template #text>Додати водія</template>
     </v-button>
   </router-link>

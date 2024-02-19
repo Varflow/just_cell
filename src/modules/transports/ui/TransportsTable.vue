@@ -14,23 +14,24 @@ interface TransportsTableProps {
   data: Transport[];
   empty: boolean;
   total: number;
+  hasRouteColumn?: boolean;
 }
 
+const props = defineProps<TransportsTableProps>();
 const columnHelper = createColumnHelper<Transport>();
 
 const columns = [
-  columnHelper.accessor("route", {
-    cell: (info) => {
-      const value = info.getValue();
-      const isExpanded = info.row.getIsExpanded();
-      const onClick = info.row.getToggleExpandedHandler();
-      return expandedButton(value, isExpanded, onClick);
-    },
-    header: (props) => "Маршрут",
-    sortDescFirst: true,
-  }),
   columnHelper.accessor("transport_num", {
-    cell: (info) => info.getValue(),
+    cell: (info) => {
+      if (props.hasRouteColumn) {
+        return info.getValue();
+      } else {
+        const value = info.getValue();
+        const isExpanded = info.row.getIsExpanded();
+        const onClick = info.row.getToggleExpandedHandler();
+        return expandedButton(value, isExpanded, onClick);
+      }
+    },
     header: "№ ТС",
     sortDescFirst: true,
   }),
@@ -50,14 +51,22 @@ const columns = [
     cell: (info) => info.getValue(),
     sortDescFirst: true,
   }),
-
-  //   columnHelper.display({
-  //     cell: (info) => h(TerminalActionsColumn, { terminal: info.row.original }),
-  //     header: "Дії",
-  //   }),
 ];
 
-defineProps<TransportsTableProps>();
+if (props.hasRouteColumn) {
+  columns.unshift(
+    columnHelper.accessor("route", {
+      cell: (info) => {
+        const value = info.getValue();
+        const isExpanded = info.row.getIsExpanded();
+        const onClick = info.row.getToggleExpandedHandler();
+        return expandedButton(value, isExpanded, onClick);
+      },
+      header: (props) => "Маршрут",
+      sortDescFirst: true,
+    })
+  );
+}
 </script>
 <script lang="ts">
 import VTable from "@/components/table/VTable.vue";

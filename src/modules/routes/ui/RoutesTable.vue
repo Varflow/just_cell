@@ -42,11 +42,6 @@ const columns = [
     cell: (info) => info.getValue(),
     sortDescFirst: true,
   }),
-
-  //   columnHelper.display({
-  //     cell: (info) => h(TerminalActionsColumn, { terminal: info.row.original }),
-  //     header: "Дії",
-  //   }),
 ];
 
 defineProps<TerminalTableProps>();

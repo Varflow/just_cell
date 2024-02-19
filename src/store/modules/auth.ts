@@ -34,7 +34,8 @@ const actions = {
       if (route.query.redirect) {
         router.push(route.query.redirect);
       } else {
-        router.push({ name: "root" });
+        // router.push({ name: "root" });
+        router.push({ name: "userStatistics", params: { id: 1 } });
       }
     }
 

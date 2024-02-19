@@ -11,12 +11,28 @@
 
     <template #appContent>
       <transports-table :data="transports" />
+      <div class="route-info-container">
+        <div class="route-info-item">
+          <h4 class="route-info-item__title">Держава</h4>
+          <p class="route-info-item__value">{{ route?.country }}</p>
+        </div>
+        <div class="route-info-item">
+          <h4 class="route-info-item__title">Місто</h4>
+          <p class="route-info-item__value">{{ route?.city }}</p>
+        </div>
+        <div class="route-info-item">
+          <h4 class="route-info-item__title">Вартість проїзду</h4>
+          <p class="route-info-item__value">{{ route?.cost }}</p>
+        </div>
+      </div>
       <div class="maps-container">
         <h3 class="maps-container__title">Маршрут</h3>
         <v-map
-          :modelValue="route.places"
           v-if="route"
+          :modelValue="route.places"
           :hasAddressAutocomplete="false"
+          :hasPlaceActions="false"
+          :has-animated-marker="true"
         />
       </div>
     </template>
@@ -69,11 +85,31 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .maps-container {
-  margin-top: 48px;
-
   &__title {
     font-size: 24px;
     margin-bottom: 16px;
+  }
+}
+
+.route-info-container {
+  display: flex;
+  flex-direction: column;
+  row-gap: 12px;
+
+  margin: 48px 0;
+
+  .route-info-item {
+    display: flex;
+    align-items: center;
+    column-gap: 8px;
+
+    &__title {
+      font-size: 18px;
+    }
+
+    &__value {
+      font-size: 16px;
+    }
   }
 }
 </style>

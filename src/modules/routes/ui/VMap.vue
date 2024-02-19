@@ -9,16 +9,24 @@
         v-if="hasAddressAutocomplete"
       />
       <div class="places-list">
+        <div class="marker-checkbox-container" v-if="hasAnimatedMarker">
+          <checkbox-field
+            label="Відображати переміщення ТЗ"
+            name="iconVisible"
+            v-model="showBusIcon"
+          />
+        </div>
         <place-item
           v-for="(place, index) in places"
           :key="place.name"
           :name="place.name"
           :index="index"
+          :moveUpDisabled="index === 0"
+          :moveDownDisabled="index === places.length - 1"
+          :hasActions="hasPlaceActions"
           @move-up="moveUp"
           @move-down="moveDown"
           @remove="removeItem"
-          :moveUpDisabled="index === 0"
-          :moveDownDisabled="index === places.length - 1"
         />
       </div>
     </div>
@@ -27,27 +35,46 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import { initMap, renderRoute } from "../api/google-maps.api";
+import {
+  initMap,
+  renderRoute,
+  toggleMarkerVisibily,
+} from "../api/google-maps.api";
 import { moveElement } from "@/utils/array";
+import CheckboxField from "@/components/fields/CheckboxField/CheckboxField.vue";
 import PlaceItem from "./PlaceItem.vue";
 
 export default defineComponent({
   emits: ["update:modelValue"],
-  props: ["modelValue", "hasAddressAutocomplete"],
+  props: [
+    "modelValue",
+    "hasAddressAutocomplete",
+    "hasPlaceActions",
+    "hasAnimatedMarker",
+  ],
   components: {
     PlaceItem,
+    CheckboxField,
   },
-  data(): { places: any[] } {
+  data(): { showBusIcon: boolean; places: any[] } {
     return {
       places: [],
+      showBusIcon: true,
     };
   },
-  mounted() {
+  async mounted() {
     const map = this.$refs.map as HTMLDivElement;
     const input = this.$refs.placesAutocomplete as HTMLInputElement;
 
-    initMap(map, input, { onPlaceChanged: this.onAddressSelected });
-    renderRoute(this.places);
+    await initMap(map, input, {
+      onPlaceChanged: this.onAddressSelected,
+    });
+    setTimeout(() => {
+      renderRoute({
+        places: this.places,
+        animatedMarker: this.hasAnimatedMarker,
+      });
+    }, 500);
   },
 
   watch: {
@@ -57,10 +84,14 @@ export default defineComponent({
       },
       immediate: true,
     },
+    showBusIcon: {
+      handler(value) {
+        toggleMarkerVisibily(value);
+      },
+    },
     places: {
       handler(value) {
-        console.log(value);
-        renderRoute(value);
+        renderRoute({ places: value, animatedMarker: this.hasAnimatedMarker });
       },
       // immediate: true,
       deep: true,
@@ -73,8 +104,6 @@ export default defineComponent({
       this.$emit("update:modelValue", this.places);
     },
     moveUp(currentIndex: number) {
-      console.log(currentIndex);
-
       this.places = moveElement(this.places, currentIndex, currentIndex - 1);
     },
     moveDown(currentIndex: number) {
@@ -104,6 +133,12 @@ export default defineComponent({
 
 .pac-target-input {
   margin-bottom: 12px;
+}
+
+.marker-checkbox-container {
+  padding-bottom: 10px;
+  margin-bottom: 12px;
+  border-bottom: 1px solid #ccc;
 }
 #map {
   width: 50%;

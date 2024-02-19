@@ -11,7 +11,7 @@
       <create-transport-button />
     </template>
     <template #appContent>
-      <transports-table :data="transports" />
+      <transports-table :data="transports" :hasRouteColumn="true" />
     </template>
   </app-layout>
 </template>

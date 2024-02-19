@@ -25,7 +25,11 @@
         </form-field>
         <route-select-field v-model="values.route" />
         <transport-select-field v-model="values.transport_number" />
-        <timepicker-range v-model="values.session_open_time" />
+        <timepicker-range
+          v-model="values.session_open_time"
+          labelFrom="Час початку зміни"
+          labelTo="Час завершення зміни"
+        />
         <form-field label="Телефон">
           <input-field
             v-model="values.phone"

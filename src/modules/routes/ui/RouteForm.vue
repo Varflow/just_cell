@@ -7,8 +7,7 @@
       @submit="onSubmit"
     >
       <template #fields="{ values }">
-        <route-select-field v-model="values.route" />
-        <form-field label="Назва ТС">
+        <form-field label="Назва">
           <input-field
             v-model="values.name"
             name="name"
@@ -40,7 +39,11 @@
             placeholder="Введіть вартість проїзду"
           />
         </form-field>
-        <v-map v-model="values.places" :hasAddressAutocomplete="true" />
+        <v-map
+          v-model="values.places"
+          :hasAddressAutocomplete="true"
+          :hasPlaceActions="true"
+        />
         <route-prices :places="values.places" />
         <div class="form-actions form-actions--fixed">
           <v-button type="submit" :loading="loading">
@@ -62,8 +65,6 @@ import VForm from "@/components/form/VForm.vue";
 import VMap from "./VMap.vue";
 import RoutePrices from "./RoutePrices.vue";
 
-import { RouteSelectField } from "@/modules/routes";
-
 const defaultConfigData = {
   id: "",
   route: "",
@@ -84,7 +85,6 @@ export default defineComponent({
     InputField,
     VButton,
     VForm,
-    RouteSelectField,
     RoutePrices,
     VMap,
   },

@@ -1,11 +1,28 @@
+import { animateTo, clearTimeouts } from "./animate-marker";
+
 let directionsService: google.maps.DirectionsService;
 let directionsRenderer: google.maps.DirectionsRenderer;
+let marker: google.maps.Marker;
+let map: google.maps.Map;
+
+const createMarker = async (map: google.maps.Map) => {
+  const { Marker } = (await google.maps.importLibrary(
+    "marker"
+  )) as google.maps.MarkerLibrary;
+
+  marker = new Marker({
+    icon: require("@/assets/icons/bus-icon.png"),
+    optimized: false,
+    zIndex: 99,
+    map,
+  });
+};
 
 export const initMap = async (
   mapRef: HTMLDivElement,
   inputRef: HTMLInputElement,
-  { onPlaceChanged }: any
-): Promise<void> => {
+  { onPlaceChanged, places }: any
+) => {
   const { Map } = (await google.maps.importLibrary(
     "maps"
   )) as google.maps.MapsLibrary;
@@ -13,17 +30,19 @@ export const initMap = async (
   directionsService = new google.maps.DirectionsService();
   directionsRenderer = new google.maps.DirectionsRenderer();
 
-  console.log("directionsService", directionsService);
-
   const center = await getDefaultCenter();
 
-  const map = new Map(mapRef, {
+  map = new Map(mapRef, {
     center,
     zoom: 5,
   });
 
-  initPlacesAutocomplete(inputRef, center, map, { onPlaceChanged });
+  initPlacesAutocomplete(inputRef, center, { onPlaceChanged });
+
   directionsRenderer.setMap(map);
+  createMarker(map);
+
+  return map;
 };
 
 export const getDefaultCenter = async () => {
@@ -46,7 +65,6 @@ export const getDefaultCenter = async () => {
 export const initPlacesAutocomplete = async (
   ref: HTMLInputElement,
   center: any,
-  map: any,
   { onPlaceChanged }: any
 ) => {
   const { Autocomplete } = (await google.maps.importLibrary(
@@ -74,17 +92,12 @@ export const initPlacesAutocomplete = async (
   });
 };
 
-export const renderRoute = (places: any) => {
-  console.log(directionsService);
+export const renderRoute = ({ places = [], animatedMarker }: any) => {
   if (!directionsService || !directionsRenderer) {
     return;
   }
 
   if (!places || !places.length) {
-    return;
-  }
-
-  if (places.length < 2) {
     return;
   }
 
@@ -105,11 +118,40 @@ export const renderRoute = (places: any) => {
     travelMode: "DRIVING",
   } as google.maps.DirectionsRequest;
 
-  console.log(places);
   directionsService.route(request, function (result, status) {
-    console.log(status);
     if (status == "OK") {
+      const steps = result?.routes[0].overview_path;
+
       directionsRenderer.setDirections(result);
+
+      if (animatedMarker) {
+        animateMarker(steps);
+      }
     }
   });
+};
+
+export const toggleMarkerVisibily = (visible: boolean) => {
+  if (visible) {
+    marker.setMap(map);
+  } else {
+    marker.setMap(null);
+  }
+};
+
+export const animateMarker = async (legs?: any[]) => {
+  if (!legs) {
+    return;
+  }
+
+  marker.setPosition(legs[0]);
+
+  const cleared = await clearTimeouts();
+
+  if (cleared) {
+    for (let index = 0; index < legs.length; index++) {
+      const leg = legs[index];
+      await animateTo(marker, marker.getPosition(), leg);
+    }
+  }
 };
