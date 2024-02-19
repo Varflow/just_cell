@@ -2,7 +2,7 @@
   <div class="app-layout">
     <app-navbar @mobileButtonClick="(value: boolean) => menuOpened = value" />
     <div class="app-layout__row">
-      <app-sidebar :menuOpened="menuOpened" />
+      <app-sidebar :menuOpened="menuOpened" v-if="hasSidebar" />
       <div class="app-layout__content">
         <transition>
           <app-loading :loading="routeLoading" />
@@ -40,6 +40,13 @@ import AppNavbar from "../AppNavbar/AppNavbar.vue";
 import AppSidebar from "../AppSidebar/AppSidebar.vue";
 
 export default defineComponent({
+  props: {
+    hasSidebar: {
+      type: Boolean,
+      default: true,
+      required: false,
+    },
+  },
   components: {
     AppNavbar,
     AppSidebar,

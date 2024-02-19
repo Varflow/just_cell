@@ -216,6 +216,11 @@ const routes: Array<RouteRecordRaw> = [
     name: "createDriver",
     component: () => import("@/modules/drivers/ui/CreateDriver.vue"),
   },
+  {
+    path: "/:pathMatch(.*)*",
+    name: "NotFound",
+    component: () => import("@/modules/errors/pages/not-found.vue"),
+  },
 ];
 
 const router = createRouter({
