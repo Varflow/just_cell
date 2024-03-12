@@ -2,7 +2,15 @@
   <div class="app-menu__subgroup" :class="{ active: opened }">
     <div class="app-menu__group-parent" @click="open">
       <div class="app-menu__item app-menu__item--parent">
-        {{ submenu.NAME }}
+        <div class="app-menu__item-info">
+          <div
+            class="app-menu__item-icon"
+            v-if="menuIcons && menuIcons[submenu.NAME]"
+            :style="{maskImage: `url(${menuIcons[submenu.NAME]!})`, WebkitMaskImage: `url(${menuIcons[submenu.NAME]!})`}"
+          ></div>
+
+          {{ submenu.NAME }}
+        </div>
         <div class="app-menu-subicon">
           <img src="@/assets/icons/chevron-down.svg" alt="Open" />
         </div>
@@ -18,20 +26,30 @@
         }"
         class="app-menu__item"
       >
-        {{ child.NAME }}
+        <div class="app-menu__item-info">
+          <div
+            class="app-menu__item-icon"
+            v-if="menuIcons && menuIcons[child.NAME]"
+            :style="{maskImage: `url(${menuIcons[child.NAME]!})`, WebkitMaskImage: `url(${menuIcons[child.NAME]!})`}"
+          ></div>
+
+          {{ child.NAME }}
+        </div>
       </router-link>
     </div>
   </div>
 </template>
 
 <script lang="ts">
+import { MenuIcons, getMenuIcons } from "@/api/menu/menu.api";
 import { defineComponent } from "vue";
 
 export default defineComponent({
   props: ["submenu", "index"],
-  data(): { opened: boolean } {
+  data(): { opened: boolean; menuIcons: MenuIcons | null } {
     return {
       opened: false,
+      menuIcons: null,
     };
   },
 
@@ -40,6 +58,7 @@ export default defineComponent({
       window.localStorage.getItem("activeSubmenu") || "-1"
     );
 
+    this.menuIcons = getMenuIcons();
     this.opened = activeSubmenuIndex === this.index;
   },
 

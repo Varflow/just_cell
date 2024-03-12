@@ -47,6 +47,27 @@
     color: $dark-primary;
     text-decoration: none;
 
+    &-info {
+      display: flex;
+      align-items: center;
+      column-gap: 12px;
+    }
+
+    &-icon {
+      mask-size: 100%;
+      mask-repeat: no-repeat;
+      mask-position: center;
+      width: 32px;
+      height: 32px;
+      background-color: #000;
+
+      transition: 0.25s background-color ease;
+    }
+
+    &-icon--parent {
+      background-color: #6b1a23;
+    }
+
     &--parent {
       justify-content: space-between;
     }
@@ -61,6 +82,10 @@
       &:hover {
         &::before {
           width: 100%;
+        }
+
+        .app-menu__item-icon {
+          background-color: $accent-primary;
         }
       }
     }

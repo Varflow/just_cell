@@ -2,7 +2,7 @@ import { http } from "@/api/client";
 import { ApiRoutes } from "@/api/routes";
 import { generatePartClientKey, sign } from "@/api/crypto/DeffiHellman";
 import { generateToken, getToken, saveToken } from "@/api/crypto/token";
-import { saveMenu } from "@/api/menu/menu.api";
+import { saveMenu, saveMenuIcons } from "@/api/menu/menu.api";
 import md5 from "md5";
 
 import { LoginDTO, LoginRequest, LoginResponse } from "./login.model";
@@ -26,6 +26,7 @@ export const login = async (credentials: LoginDTO) => {
     saveUserToSession(data.user_info);
     saveUserRulesToSession(data.rules);
     saveMenu(data.user_menu);
+    saveMenuIcons(data.icon_menu);
   }
 
   return data;

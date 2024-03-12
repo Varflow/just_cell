@@ -8,7 +8,14 @@
     >
       <div class="app-menu__group-parent" @click="open(menuGroup.index)">
         <div class="app-menu__item app-menu__item--parent">
-          {{ menuGroup.title }}
+          <div class="app-menu__item-info">
+            <div
+              class="app-menu__item-icon app-menu__item-icon--parent"
+              v-if="menuIcons && menuIcons[menuGroup.title]"
+              :style="{maskImage: `url(${menuIcons[menuGroup.title]!})`, WebkitMaskImage: `url(${menuIcons[menuGroup.title]!})`}"
+            ></div>
+            {{ menuGroup.title }}
+          </div>
           <div class="app-menu-icon">
             <img src="@/assets/icons/chevron-down.svg" alt="Open" />
           </div>
@@ -31,7 +38,14 @@
             class="app-menu__item"
             v-else
           >
-            {{ child.NAME }}
+            <div class="app-menu__item-info">
+              <div
+                class="app-menu__item-icon"
+                v-if="menuIcons && menuIcons[child.NAME]"
+                :style="{maskImage: `url(${menuIcons[child.NAME]!})`, WebkitMaskImage: `url(${menuIcons[child.NAME]!})`}"
+              ></div>
+              {{ child.NAME }}
+            </div>
           </router-link>
         </div>
       </div>
@@ -40,22 +54,33 @@
 </template>
 <script lang="ts">
 import { defineComponent } from "vue";
-import { getMenu, MenuView } from "@/api/menu/menu.api";
+import {
+  getMenu,
+  getMenuIcons,
+  MenuIcons,
+  MenuView,
+} from "@/api/menu/menu.api";
 import AppSubmenu from "./AppSubmenu.vue";
 
 export default defineComponent({
   components: {
     AppSubmenu,
   },
-  data(): { activeIndex: number; menu: MenuView[] } {
+  data(): {
+    activeIndex: number;
+    menu: MenuView[];
+    menuIcons: MenuIcons | null;
+  } {
     return {
       activeIndex: -1,
       menu: [] as MenuView[],
+      menuIcons: null,
     };
   },
 
   mounted() {
     this.menu = getMenu();
+    this.menuIcons = getMenuIcons();
     this.activeIndex = JSON.parse(
       window.localStorage.getItem("activeMenu") || "-1"
     );

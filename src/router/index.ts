@@ -52,10 +52,9 @@ const routes: Array<RouteRecordRaw> = [
     path: "/points",
     children: [
       {
-        path: "fiscal",
+        path: "create",
         name: "fiscalCreate",
-        component: () =>
-          import("@/modules/points/pages/CreateFiscalPointPage.vue"),
+        component: () => import("@/modules/points/pages/CreatePointPage.vue"),
       },
       {
         path: "non-fiscal",

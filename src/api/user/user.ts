@@ -1,4 +1,5 @@
 import {
+  MENU_ICONS_KEY,
   MENU_STORE_KEY,
   RULES_STORAGE_KEY,
   TOKEN_STORE_KEY,
@@ -35,8 +36,5 @@ export const getUserRulesFromSession = (): any => {
 };
 
 export const clearUserSession = () => {
-  window.localStorage.removeItem(USER_STATE_KEY);
-  window.localStorage.removeItem(RULES_STORAGE_KEY);
-  window.localStorage.removeItem(TOKEN_STORE_KEY);
-  window.localStorage.removeItem(MENU_STORE_KEY);
+  window.localStorage.clear();
 };

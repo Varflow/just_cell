@@ -1,4 +1,4 @@
-import { MENU_STORE_KEY } from "@/contants/storage";
+import { MENU_ICONS_KEY, MENU_STORE_KEY } from "@/contants/storage";
 
 export type Menu = {
   NAME: string;
@@ -6,6 +6,7 @@ export type Menu = {
   alloc_type?: number;
   children?: Menu[];
 };
+export type MenuIcons = { [key: string]: string | null };
 export type MenuList = { [key: string]: Menu };
 export type MenuView = {
   index: number;
@@ -15,6 +16,18 @@ export type MenuView = {
 
 export const saveMenu = (menu: MenuList) => {
   window.localStorage.setItem(MENU_STORE_KEY, JSON.stringify(menu));
+};
+
+export const saveMenuIcons = (menuIcons: MenuIcons) => {
+  window.localStorage.setItem(MENU_ICONS_KEY, JSON.stringify(menuIcons));
+};
+
+export const getMenuIcons = () => {
+  const menuIcons = JSON.parse(
+    window.localStorage.getItem(MENU_ICONS_KEY) || "null"
+  );
+
+  return menuIcons;
 };
 
 export const getMenu = () => {
