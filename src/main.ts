@@ -1,5 +1,6 @@
 import { createApp } from "vue";
 import toasts from "vue-toastification";
+import { createPinia } from "pinia";
 
 import App from "./App.vue";
 import router from "./router";
@@ -26,10 +27,12 @@ const toastOptions = {
 };
 
 const app = createApp(App);
+const pinia = createPinia();
 
 app.use(router);
 app.use(store);
 app.use(toasts, toastOptions);
+app.use(pinia);
 
 app.directive("click-outside", {
   mounted: function (el, binding) {

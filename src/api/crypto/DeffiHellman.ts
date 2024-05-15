@@ -20,7 +20,7 @@ export const sign = async (data: any, token: string) => {
   if (!data) {
     return "";
   }
-  const values = Object.values(data) || {};
+  const values: any = Object.values(data) || {};
   const message = values.join("") + token;
 
   return await sha256(message);

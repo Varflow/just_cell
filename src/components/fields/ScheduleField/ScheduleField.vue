@@ -54,6 +54,7 @@ export default defineComponent({
   methods: {
     onChange(item: string, checked: boolean) {
       if (item === this.ALL_DAYS) {
+        // @ts-ignore
         this.selected = this.days.reduce<SelectedItem>((selected, day) => {
           selected[day.value] = checked;
 

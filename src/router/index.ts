@@ -216,6 +216,16 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import("@/modules/drivers/ui/CreateDriver.vue"),
   },
   {
+    path: "/products",
+    name: "products",
+    component: () => import("@/modules/products/pages/ProductsPage.vue"),
+  },
+  {
+    path: "/products/create",
+    name: "createProduct",
+    component: () => import("@/modules/products/pages/CreateProductPage.vue"),
+  },
+  {
     path: "/:pathMatch(.*)*",
     name: "NotFound",
     component: () => import("@/modules/errors/pages/not-found.vue"),
