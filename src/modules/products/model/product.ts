@@ -1,4 +1,5 @@
 export type Product = {
+  id: number;
   point: any;
   name: string;
   price: number;

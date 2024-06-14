@@ -6,7 +6,7 @@ import {
   createDriver,
   getDrivers,
 } from "../api/drivers.api";
-import router from "@/router";
+import router from "@/app/router";
 
 type DriversState = {
   drivers: Driver[];

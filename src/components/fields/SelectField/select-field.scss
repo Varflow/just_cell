@@ -82,6 +82,10 @@
 
     cursor: pointer;
 
+    &-icon {
+      width: 48px;
+    }
+
     &-content {
       display: flex;
       flex-direction: column;

@@ -13,6 +13,10 @@ body {
   font-family: "Roboto";
 }
 
+a {
+  text-decoration: none;
+}
+
 a:has(> button) {
   text-decoration: none;
   @include mobile {

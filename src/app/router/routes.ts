@@ -1,13 +1,7 @@
-import { isAuthorized } from "@/api/auth/checkAuth";
-import { getUserRulesFromSession } from "@/api/user/user";
-import { Rules } from "@/contants/rules";
-import { store } from "@/store";
-import { RouterActions } from "@/store/modules/router";
-import { UserActions } from "@/store/modules/user";
-import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
-import { useToast } from "vue-toastification";
+import { RouteRecordRaw } from "vue-router";
+import { checkRolesMiddleware } from "./middlewares/check-roles.middleware";
 
-const routes: Array<RouteRecordRaw> = [
+export const routes: RouteRecordRaw[] = [
   {
     path: "/",
     name: "root",
@@ -158,18 +152,7 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: "/Terminal/Activate",
     name: "activateTerminal",
-    beforeEnter: (to, from, next) => {
-      const rulesList = getUserRulesFromSession();
-      const rules = rulesList.map((rule: any) => rule.tag);
-      const canEnter = rules?.includes(Rules.ADD_TERMINAL) || false;
-      const toast = useToast();
-      if (!canEnter) {
-        toast.error("У вас немає доступу до цієї сторінки!");
-        return next(from.path);
-      }
-
-      return next();
-    },
+    beforeEnter: checkRolesMiddleware,
     component: () => import("@/views/Terminals/ActivateTerminalView.vue"),
   },
   {
@@ -216,6 +199,26 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import("@/modules/drivers/ui/CreateDriver.vue"),
   },
   {
+    path: "/branches",
+    name: "branches",
+    component: () => import("@/modules/branches/pages/BranchesListPage.vue"),
+  },
+  {
+    path: "/branches/:id",
+    name: "branch",
+    component: () => import("@/modules/branches/pages/BranchShowPage.vue"),
+  },
+  {
+    path: "/branches/edit",
+    name: "editBranch",
+    component: () => import("@/modules/branches/pages/BranchShowPage.vue"),
+  },
+  {
+    path: "/ingredient/create",
+    name: "createIngredient",
+    component: () => import("@/modules/stock/pages/CreateIngredientPage.vue"),
+  },
+  {
     path: "/products",
     name: "products",
     component: () => import("@/modules/products/pages/ProductsPage.vue"),
@@ -231,32 +234,3 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import("@/modules/errors/pages/not-found.vue"),
   },
 ];
-
-const router = createRouter({
-  history: createWebHistory(process.env.BASE_URL),
-  routes,
-});
-
-const authExcludedRoutes = ["signin", "signup", "reset", "confirmPassword"];
-
-router.beforeResolve((to, from, next) => {
-  store.commit(RouterActions.SET_LOADING, false);
-  next();
-});
-
-router.beforeEach(async (to, from, next) => {
-  if (!authExcludedRoutes.includes(to.name as string)) {
-    store.commit(RouterActions.SET_LOADING, true);
-
-    const authorized = await isAuthorized();
-
-    if (!authorized) {
-      return next({ name: "signin", query: { redirect: to.fullPath } });
-    }
-  }
-
-  store.commit(UserActions.SET_USER);
-  return next();
-});
-
-export default router;

@@ -32,7 +32,31 @@
     </div>
   </div>
 </template>
-<script lang="ts">
+
+<script setup lang="ts">
+import { computed, ref, useSlots } from "vue";
+import { useRouterStore } from "@/app/router/router.store";
+import AppLoading from "../AppLoading/AppLoading.vue";
+import AppNavbar from "../AppNavbar/AppNavbar.vue";
+import AppSidebar from "../AppSidebar/AppSidebar.vue";
+
+type AppLayoutProps = {
+  hasSidebar?: boolean;
+};
+
+const props = withDefaults(defineProps<AppLayoutProps>(), {
+  hasSidebar: true,
+});
+const slots = useSlots();
+const routerStore = useRouterStore();
+
+const menuOpened = ref(false);
+const hasAppLink = computed(() => Boolean(slots.appLink));
+const hasAppTitle = computed(() => Boolean(slots.appTitle));
+const routeLoading = computed(() => Boolean(routerStore.loading));
+</script>
+
+<!-- <script lang="ts">
 import { defineComponent } from "vue";
 
 import AppLoading from "../AppLoading/AppLoading.vue";
@@ -46,6 +70,7 @@ export default defineComponent({
       default: true,
       required: false,
     },
+
   },
   components: {
     AppNavbar,
@@ -72,5 +97,5 @@ export default defineComponent({
     },
   },
 });
-</script>
+</script> -->
 <style lang=""></style>

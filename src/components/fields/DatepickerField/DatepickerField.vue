@@ -92,7 +92,6 @@ export default defineComponent({
   watch: {
     modelValue: {
       handler(value) {
-        console.log("value", value);
         this.value = value;
       },
       immediate: true,
@@ -119,6 +118,9 @@ export default defineComponent({
     onDateChange(event: Event) {
       const eventData = (event as CustomEvent).detail;
       const date = format(eventData.date);
+
+      console.log("eventData", eventData.date);
+
       this.$emit("update:modelValue", date);
     },
 

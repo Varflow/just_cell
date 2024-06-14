@@ -24,6 +24,7 @@
             <img src="@/assets/icons/close-icon.svg" alt="Close" />
           </div>
         </div>
+        <slot name="description"></slot>
         <slot name="content" :close="close"></slot>
         <div class="modal-footer">
           <slot name="footer" :close="close"></slot>

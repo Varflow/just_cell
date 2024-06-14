@@ -3,7 +3,7 @@ import toasts from "vue-toastification";
 import { createPinia } from "pinia";
 
 import App from "./App.vue";
-import router from "./router";
+import router from "@/app/router";
 import { store } from "./store";
 
 import "vue-toastification/dist/index.css";

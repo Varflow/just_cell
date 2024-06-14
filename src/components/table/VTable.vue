@@ -1,27 +1,34 @@
-<template lang="">
-  <table-empty v-if="empty" />
+<template>
+  <TableEmpty v-if="empty" />
   <table
     v-else
-    class="table"
     border="0"
     rules="none"
+    class="table"
     :class="{ 'table--empty': empty }"
   >
-    <table-header :table="table" />
-    <table-body
-      :table="table"
+    <TableHeader :table="table" />
+    <TableBody
       v-if="!empty"
+      :striped="striped"
+      :table="table"
       @row-click="(row) => $emit('row-click', row)"
     >
       <template #context-menu="{ values }">
         <slot name="context-menu" :values="values"></slot>
       </template>
-    </table-body>
+    </TableBody>
   </table>
 
-  <v-pagination v-if="hasPagination" :total="total" />
+  <VPagination v-if="hasPagination" :total="total" />
 </template>
 <script setup lang="ts">
+import { ref } from "vue";
+import TableBody from "./TableBody.vue";
+import TableHeader from "./TableHeader.vue";
+import TableEmpty from "./EmptyTable.vue";
+import VPagination from "../panigation/VPagination.vue";
+
 import {
   ColumnDef,
   SortingState,
@@ -37,9 +44,11 @@ interface TableProps {
   empty: boolean;
   hasPagination: boolean;
   total?: number;
+  striped?: boolean;
 }
 
 const props = defineProps<TableProps>();
+const emits = defineEmits(["row-click"]);
 const sorting = ref<SortingState>([]);
 
 const table = useVueTable({
@@ -62,22 +71,5 @@ const table = useVueTable({
   getCoreRowModel: getCoreRowModel(),
   getSortedRowModel: getSortedRowModel(),
   getExpandedRowModel: getExpandedRowModel(),
-});
-</script>
-<script lang="ts">
-import { defineComponent, ref } from "vue";
-import TableBody from "./TableBody.vue";
-import TableHeader from "./TableHeader.vue";
-import TableEmpty from "./EmptyTable.vue";
-import VPagination from "../panigation/VPagination.vue";
-
-export default defineComponent({
-  emits: ["row-click"],
-  components: {
-    TableBody,
-    TableHeader,
-    TableEmpty,
-    VPagination,
-  },
 });
 </script>

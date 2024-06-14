@@ -6,7 +6,7 @@
         :class="{ active: selectedIndex === tab.props.title }"
         v-for="tab of tabs"
         :key="tab.props.title"
-        @click="selectedIndex = tab.props.title"
+        @click="selectTab(tab.props.title)"
       >
         {{ tab.props.title }}
       </div>
@@ -29,17 +29,18 @@ import {
 } from "vue";
 
 export default defineComponent({
-  setup(_, { slots }) {
+  setup(_, { slots, emit }) {
     const state = reactive({
-      selectedIndex: null as number | null,
+      selectedIndex: null as string | null,
       tabs: [] as any,
       count: 0,
     });
 
     provide("TabsProvider", state);
 
-    const selectTab = (tab: number) => {
+    const selectTab = (tab: string) => {
       state.selectedIndex = tab;
+      emit("change", tab);
     };
 
     const update = () => {

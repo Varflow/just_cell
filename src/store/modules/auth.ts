@@ -1,7 +1,7 @@
 import { login } from "@/api/auth/login";
 import { logout } from "@/api/auth/logout";
 import { resetPassword } from "@/api/auth/reset-password";
-import router from "@/router";
+import router from "@/app/router";
 
 type AuthState = {
   loading: boolean;

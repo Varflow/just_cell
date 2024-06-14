@@ -1,5 +1,5 @@
 <template>
-  <div class="table-tbody">
+  <div class="table-tbody" :class="{ 'table-tbody--striped': striped }">
     <v-context-menu ref="contextMenu">
       <slot
         name="context-menu"
@@ -53,6 +53,7 @@
 <script setup lang="ts">
 interface TableHeaderProps {
   table: Table<any>;
+  striped?: boolean;
 }
 const props = defineProps<TableHeaderProps>();
 

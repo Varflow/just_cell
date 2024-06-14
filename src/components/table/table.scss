@@ -27,6 +27,14 @@
     background: lighten($dark-primary, 70);
   }
 
+  &-tbody--striped {
+    .table-row:nth-child(odd) {
+      .table-tr {
+        background-color: lighten($dark-secondary, 90);
+      }
+    }
+  }
+
   &-tbody {
     @include table-spacing(10);
   }
@@ -126,6 +134,8 @@
     display: block;
     white-space: normal;
     word-wrap: break-word;
+
+    margin: auto;
 
     min-width: 13%;
     max-width: 12%;

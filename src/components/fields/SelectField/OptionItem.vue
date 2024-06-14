@@ -1,7 +1,12 @@
 <template>
   <div class="select-field__item" @click="$emit('select', option)">
     <div class="select-field__item-value">
-      <img v-if="option.icon" :src="option.icon" alt="" />
+      <img
+        v-if="option.icon"
+        :src="option.icon"
+        alt=""
+        class="select-field__item-icon"
+      />
       <div class="select-field__item-content">
         {{ option.label }}
         <span class="select-field__item-hint">{{ option.hint }}</span>

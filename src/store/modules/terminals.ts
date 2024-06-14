@@ -17,7 +17,7 @@ import {
   getEcommTermilaRefs,
 } from "@/api/terminals/terminals";
 
-import router from "@/router";
+import router from "@/app/router";
 
 type KeyFile = {
   link: string;

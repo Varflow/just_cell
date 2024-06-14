@@ -11,5 +11,10 @@ export const useProductsStore = defineStore("products", {
       this.products = getProducts();
       this.isLoading = false;
     },
+    getProductsByBranch(branchId: number) {
+      this.isLoading = true;
+      this.products = getProducts();
+      this.isLoading = false;
+    },
   },
 });

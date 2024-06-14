@@ -1,7 +1,7 @@
 import { format } from "@/components/fields/DatepickerField/format";
 import { Transport } from "../models/transport";
 import { createTransport, getTransports } from "../api/transports.api";
-import router from "@/router";
+import router from "@/app/router";
 
 type TransportsState = {
   transports: Transport[];

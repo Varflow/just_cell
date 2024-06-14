@@ -37,7 +37,6 @@ export default defineComponent({
   watch: {
     fields: {
       handler(value) {
-        console.log("WATCH", value);
         this.setColumns(value);
       },
       immediate: true,

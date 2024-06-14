@@ -4,7 +4,7 @@ import { getToken } from "./crypto/token";
 import { ApiRoutes } from "./routes";
 
 import { useToast } from "vue-toastification";
-import router from "@/router";
+import router from "@/app/router";
 
 const toast = useToast();
 

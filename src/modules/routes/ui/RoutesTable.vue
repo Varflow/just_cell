@@ -49,7 +49,7 @@ defineProps<TerminalTableProps>();
 <script lang="ts">
 import VTable from "@/components/table/VTable.vue";
 import { defineComponent } from "vue";
-import router from "@/router";
+import router from "@/app/router";
 import { ROUTE_STORAGE_KEY } from "@/contants/storage";
 
 export default defineComponent({

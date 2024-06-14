@@ -1,52 +1,19 @@
 <!-- eslint-disable vue/no-mutating-props -->
 <template>
   <v-form
-    class-names="product-form"
+    class-names="product-form-container"
     :initial-values="defaultData"
     @submit="onSubmit"
   >
     <template #fields="{ values }">
-      <div class="product-form-col">
-        <form-field label="Точка (-и)*:">
-          <input-field
-            v-model="values.point"
-            name="point"
-            type="text"
-            placeholder="Оберіть одну або декілька точок"
-          />
-        </form-field>
-        <form-field label="Назва товару/послуги*:">
-          <input-field
-            v-model="values.name"
-            name="point"
-            type="text"
-            placeholder="Напишіть назву товару "
-          />
-        </form-field>
-        <form-field label="Ціна за одиницю*:">
-          <input-field
-            v-model="values.price"
-            name="point"
-            type="number"
-            placeholder="00.00"
-          />
-        </form-field>
-        <checkbox-field
-          v-model="values.taxIncluded"
-          name="taxIncluded"
-          label="Податок включений у вартість*:"
-        />
-        <checkbox-field
-          v-model="values.isFiscal"
-          name="taxIncluded"
-          label="Фіскалізувати*:"
-        />
-        <checkbox-field
-          v-model="values.hasBonus"
-          name="taxIncluded"
-          label="Бонус з продажів*:"
-        />
-      </div>
+      <VTabs>
+        <VTab title="Загальна інформація">
+          <ProductInfoForm :values="values" />
+        </VTab>
+        <VTab title="Інгредієнти">
+          <ProductIngredientsForm :values="values" />
+        </VTab>
+      </VTabs>
 
       <div class="form-actions form-actions--fixed">
         <v-button type="submit">
@@ -58,12 +25,12 @@
 </template>
 <script setup lang="ts">
 import VForm from "@/components/form/VForm.vue";
-import FormField from "@/components/fields/FormField/FormField.vue";
-import InputField from "@/components/fields/InputField/InputField.vue";
-import CheckboxField from "@/components/fields/CheckboxField/CheckboxField.vue";
+import VTabs from "@/components/tabs/VTabs.vue";
+import VTab from "@/components/tabs/VTab.vue";
 import VButton from "@/components/buttons/BaseButton/BaseButton.vue";
 
-import { useToast } from "vue-toastification";
+import ProductInfoForm from "./ProductInfoForm.vue";
+import ProductIngredientsForm from "./ProductIngredientsForm.vue";
 
 type ProductFormProps = {
   initialData?: any;
@@ -71,7 +38,6 @@ type ProductFormProps = {
 
 const props = defineProps<ProductFormProps>();
 const emits = defineEmits<{ submit: [values: any] }>();
-const toast = useToast();
 
 const defaultData = props.initialData || {
   point: "",
@@ -91,14 +57,8 @@ const onSubmit = (values: any) => {
 </script>
 
 <style lang="scss">
-.product-form {
+.product-form-container {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-}
-
-.product-form-col {
-  display: flex;
-  flex-direction: column;
-  row-gap: 8px;
+  grid-template-columns: repeat(2, 1fr);
 }
 </style>
