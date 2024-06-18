@@ -1,5 +1,5 @@
 export const loadGoogleSdk = (g) => {
-  var h,
+  let h,
     a,
     k,
     p = "The Google Maps JavaScript API",
@@ -9,7 +9,7 @@ export const loadGoogleSdk = (g) => {
     m = document,
     b = window;
   b = b[c] || (b[c] = {});
-  var d = b.maps || (b.maps = {}),
+  let d = b.maps || (b.maps = {}),
     r = new Set(),
     e = new URLSearchParams(),
     u = () =>
