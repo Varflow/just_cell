@@ -1,7 +1,4 @@
-import { Datepicker } from "vanillajs-datepicker";
-
 export const format = (date: Date) => {
-  // return Datepicker.formatDate(date, "yyyy-mm-dd");
   return formatWithTimezone(date, "Europe/Kiev");
 };
 

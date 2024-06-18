@@ -38,7 +38,6 @@
   </div>
 </template>
 <script setup lang="ts">
-// import { createPopper } from "@popperjs/core";
 interface SelectFieldProps {
   name: string;
   options: Option[];
@@ -50,31 +49,13 @@ interface SelectFieldProps {
   size?: "md" | "sm";
 }
 
-// const tooltip = ref<any>(null);
-// const trigger = ref<any>(null);
-// const popper = ref<any>(null);
-
-// onMounted(() => {
-//   popper.value = createPopper(trigger.value, tooltip.value, {
-//     placement: "right-start",
-//     modifiers: [
-//       {
-//         name: "offset",
-//         options: {
-//           offset: [0, 8],
-//         },
-//       },
-//     ],
-//   });
-// });
-
 withDefaults(defineProps<SelectFieldProps>(), {
   hasSearch: true,
   size: "md",
 });
 </script>
 <script lang="ts">
-import { defineComponent, onMounted, ref } from "vue";
+import { defineComponent } from "vue";
 import SearchInput from "./SelectSearchInput.vue";
 import SelectedInput from "./SelectSelectedInput.vue";
 import OptionItem from "./OptionItemWithCheckbox.vue";
@@ -156,10 +137,6 @@ export default defineComponent({
       const labels = this.options
         .filter(({ value }: any) => selected.includes(value))
         .map((item: any) => item.label);
-
-      // if (labels.length > 2) {
-      //   return `Selected ${labels.length}`;
-      // }
 
       return labels.join(",");
     },
