@@ -97,7 +97,7 @@ export const renderRoute = ({ places = [], animatedMarker }: any) => {
     return;
   }
 
-  if (!places || !places.length) {
+  if (!places?.length) {
     return;
   }
 
@@ -149,8 +149,7 @@ export const animateMarker = async (legs?: any[]) => {
   const cleared = await clearTimeouts();
 
   if (cleared) {
-    for (let index = 0; index < legs.length; index++) {
-      const leg = legs[index];
+    for (const leg of legs) {
       await animateTo(marker, marker.getPosition(), leg);
     }
   }
