@@ -1,20 +1,10 @@
-.app-menu__subgroup-subchildren {
-  .app-menu__item.router-link-active {
-    &::before {
-      width: 0;
-    }
-  }
-}
-
 .app-menu {
   &__item.router-link-active {
     &::before {
       width: 100%;
     }
   }
-}
 
-.app-menu {
   height: 100%;
 
   display: flex;
@@ -141,6 +131,12 @@
       display: none;
       flex-direction: column;
       padding-left: 12px;
+
+      .app-menu__item.router-link-active {
+        &::before {
+          width: 0;
+        }
+      }
     }
   }
   &__group {

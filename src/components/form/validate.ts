@@ -25,7 +25,6 @@ export const validateOne = async (
   let error = "";
   try {
     await schema.validateAt(field, values);
-    error = "";
   } catch (_error: any) {
     error = _error.message;
   }

@@ -11,8 +11,6 @@
   />
 </template>
 
-<style scoped lang="scss"></style>
-
 <script setup lang="ts">
 export interface InputFieldProps {
   name: string;
