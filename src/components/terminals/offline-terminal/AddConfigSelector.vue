@@ -111,7 +111,7 @@ export default defineComponent({
   width: 50%;
 
   label {
-    font-family: "Roboto";
+    font-family: "Roboto", sans-serif;
     font-style: normal;
     font-weight: 500;
     font-size: 18px;

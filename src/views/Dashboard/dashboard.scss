@@ -12,7 +12,7 @@
   }
 
   .company-name {
-    font-family: "Roboto";
+    font-family: "Roboto", sans-serif;
     font-style: normal;
     font-weight: 500;
     font-size: 40px;
@@ -30,7 +30,7 @@
   }
 
   .greeting {
-    font-family: "Roboto";
+    font-family: "Roboto", sans-serif;
     font-style: normal;
     font-weight: 500;
     font-size: 40px;
@@ -48,7 +48,7 @@
 
 .user-stats {
   &__bonuses {
-    font-family: "Roboto";
+    font-family: "Roboto", sans-serif;
     font-style: normal;
     font-weight: 500;
     font-size: 40px;
@@ -73,7 +73,7 @@
 
 .products-stats {
   &__title {
-    font-family: "Roboto";
+    font-family: "Roboto", sans-serif;
     font-style: normal;
     font-weight: 500;
     font-size: 36px;
@@ -102,7 +102,7 @@
       align-items: center;
 
       &__title {
-        font-family: "Roboto";
+        font-family: "Roboto", sans-serif;
         font-style: normal;
         font-weight: 400;
         font-size: 32px;
@@ -117,7 +117,7 @@
       }
 
       &__value {
-        font-family: "Roboto";
+        font-family: "Roboto", sans-serif;
         font-style: normal;
         font-weight: 700;
         font-size: 54px;

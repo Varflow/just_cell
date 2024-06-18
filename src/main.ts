@@ -8,6 +8,11 @@ import { store } from "./store";
 
 import "vue-toastification/dist/index.css";
 import "@/styles/index.scss";
+import { loadGoogleSdk } from "@/app/google/init";
+
+loadGoogleSdk({
+  key: process.env.VUE_APP_GOOGLE_API_KEY,
+});
 
 const toastOptions = {
   transition: "Vue-Toastification__bounce",

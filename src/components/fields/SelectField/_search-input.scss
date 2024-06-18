@@ -18,7 +18,7 @@
     background: #f2f3f7;
     border-radius: 99px;
 
-    font-family: "Roboto";
+    font-family: "Roboto", sans-serif;
     font-style: normal;
     font-weight: 400;
     font-size: 16px;
@@ -29,7 +29,7 @@
     color: $gray-primary;
 
     &::placeholder {
-      font-family: "Roboto";
+      font-family: "Roboto", sans-serif;
       font-style: normal;
       font-weight: 400;
       font-size: 16px;

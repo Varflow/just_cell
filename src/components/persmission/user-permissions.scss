@@ -7,7 +7,7 @@
     column-gap: 8px;
 
     &-label {
-      font-family: "Roboto";
+      font-family: "Roboto", sans-serif;
       font-style: normal;
       font-weight: 400;
       font-size: 18px;
@@ -24,7 +24,7 @@
       background: none;
       border: none;
 
-      font-family: "Roboto";
+      font-family: "Roboto", sans-serif;
       font-style: normal;
       font-weight: 500;
       font-size: 18px;
@@ -42,7 +42,7 @@
   &__title {
     margin: 18px 0;
 
-    font-family: "Roboto";
+    font-family: "Roboto", sans-serif;
     font-style: normal;
     font-weight: 500;
     font-size: 20px;
