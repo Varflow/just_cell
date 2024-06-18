@@ -1,7 +1,7 @@
 import { http } from "@/api/client";
 import { ApiRoutes } from "@/api/routes";
-import { generatePartClientKey, sign } from "@/api/crypto/DeffiHellman";
-import { generateToken, getToken, saveToken } from "@/api/crypto/token";
+import { generatePartClientKey } from "@/api/crypto/DeffiHellman";
+import { generateToken, saveToken } from "@/api/crypto/token";
 import { saveMenu, saveMenuIcons } from "@/api/menu/menu.api";
 import md5 from "md5";
 
