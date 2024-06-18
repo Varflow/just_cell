@@ -23,7 +23,7 @@ export const initMap = async (
   inputRef: HTMLInputElement,
   { onPlaceChanged, places }: any
 ) => {
-  const { Map } = (await google.maps.importLibrary(
+  const { Map: GoogleMap } = (await google.maps.importLibrary(
     "maps"
   )) as google.maps.MapsLibrary;
 
@@ -32,7 +32,7 @@ export const initMap = async (
 
   const center = await getDefaultCenter();
 
-  map = new Map(mapRef, {
+  map = new GoogleMap(mapRef, {
     center,
     zoom: 5,
   });
