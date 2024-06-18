@@ -32,7 +32,7 @@ export default defineComponent({
       const passwordLength = 15;
       let password = "";
 
-      for (var i = 0; i < passwordLength; i++) {
+      for (let i = 0; i < passwordLength; i++) {
         const randomNumber = Math.floor(Math.random() * chars.length);
         password += chars.substring(randomNumber, randomNumber + 1);
       }
