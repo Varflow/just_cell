@@ -1,4 +1,3 @@
-import { format } from "@/components/fields/DatepickerField/format";
 import { Transport } from "../models/transport";
 import { createTransport, getTransports } from "../api/transports.api";
 import router from "@/app/router";
@@ -37,22 +36,11 @@ const mutations = {
 };
 
 const actions = {
-  async [TransportsActions.GET_TRANSPORTS]({ commit }: any, filters: any) {
+  async [TransportsActions.GET_TRANSPORTS]({ commit }: any) {
     try {
       commit(TransportsActions.SET_LOADING, true);
 
-      // const DateFrom = filters.DateFrom || format(new Date());
-      // const DateTo = filters.DateTo || format(new Date());
-      // const filtersData = {
-      //   ...filters,
-      //   DateFrom,
-      //   DateTo,
-      //   page: filters.page || 0,
-      //   perPage: filters.perPage || 10,
-      //   alloc_type: filters.alloc_type,
-      // };
-
-      const transports = await getTransports();
+      const transports = getTransports();
 
       commit(
         TransportsActions.SET_TRANSPORTS,
@@ -72,18 +60,7 @@ const actions = {
     try {
       commit(TransportsActions.SET_FORM_LOADING, true);
 
-      // const DateFrom = filters.DateFrom || format(new Date());
-      // const DateTo = filters.DateTo || format(new Date());
-      // const filtersData = {
-      //   ...filters,
-      //   DateFrom,
-      //   DateTo,
-      //   page: filters.page || 0,
-      //   perPage: filters.perPage || 10,
-      //   alloc_type: filters.alloc_type,
-      // };
-
-      await createTransport(payload);
+      createTransport(payload);
       router.push({ name: "transportList" });
       toast.success("ТС успішно створено!");
 
