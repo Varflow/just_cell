@@ -18,4 +18,3 @@ withDefaults(defineProps<UserStatisticsCardProps>(), {
 <script lang="ts">
 export default {};
 </script>
-<style lang=""></style>

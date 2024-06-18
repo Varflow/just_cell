@@ -122,4 +122,3 @@ export default defineComponent({
   },
 });
 </script>
-<style lang=""></style>

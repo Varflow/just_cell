@@ -39,4 +39,3 @@ export default {
   emits: ["select"],
 };
 </script>
-<style lang=""></style>
