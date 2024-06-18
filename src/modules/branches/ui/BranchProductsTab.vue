@@ -15,4 +15,3 @@ onMounted(() => {
   getProductsByBranch(1);
 });
 </script>
-<style scoped></style>

@@ -22,5 +22,3 @@ defineProps<IngredientsTableProps>();
 
 const columns = createIngredientsTableColumns();
 </script>
-
-<style scoped></style>

@@ -15,4 +15,3 @@ onMounted(() => {
   getBranchStock(1);
 });
 </script>
-<style scoped></style>

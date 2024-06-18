@@ -22,5 +22,3 @@ defineProps<ProductsTableProps>();
 
 const columns = createProductsTableColumns();
 </script>
-
-<style scoped></style>

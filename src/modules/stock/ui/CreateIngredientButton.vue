@@ -9,5 +9,3 @@
 <script setup lang="ts">
 import VButton from "@/components/buttons/BaseButton/BaseButton.vue";
 </script>
-
-<style scoped></style>

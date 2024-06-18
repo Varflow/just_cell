@@ -37,5 +37,3 @@ export default defineComponent({
   methods: {},
 });
 </script>
-
-<style scoped></style>

@@ -36,31 +36,6 @@ export default defineComponent({
     SelectField,
   },
 
-  // data() {
-  //   return {
-  //     value: "",
-  //   };
-  // },
-
-  // watch: {
-  //   modelValue: {
-  //     handler(value) {
-  //       // Значение которое приходит это label, а для селекта нужен id. Поэтому выбираем по label нужные option и получаем его id
-  //       if (!this.companies || Number.isInteger(Number(value))) {
-  //         return;
-  //       }
-
-  //       const company =
-  //         this.companies.find((company) => company.label === value)?.value ||
-  //         "";
-
-  //       this.value = company;
-  //       this.$emit("update:modelValue", company);
-  //     },
-  //     immediate: true,
-  //   },
-  // },
-
   computed: {
     companies(): { value: string; label: string }[] {
       const ref: TerminalRef = this.$store.state.terminals.terminalsRef;
