@@ -1,4 +1,3 @@
-import { Code } from "../response";
 import { User } from "../user/user.model";
 
 export type LoginDTO = {
@@ -14,7 +13,7 @@ export type LoginRequest = {
 };
 
 export type LoginResponse = {
-  code: Code;
+  code: number;
   p_server: string;
   user_info: User;
 };
