@@ -32,8 +32,11 @@ export default defineComponent({
       const passwordLength = 15;
       let password = "";
 
+      const crypto = window.crypto;
+      const array = new Uint32Array(1);
+
       for (let i = 0; i < passwordLength; i++) {
-        const randomNumber = Math.floor(Math.random() * chars.length);
+        const randomNumber = crypto.getRandomValues(array)[0];
         password += chars.substring(randomNumber, randomNumber + 1);
       }
 

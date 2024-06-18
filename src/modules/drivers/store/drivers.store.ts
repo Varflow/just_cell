@@ -1,4 +1,3 @@
-import { format } from "@/components/fields/DatepickerField/format";
 import { Driver } from "../models/driver";
 import {
   changeDriverTransport,
@@ -54,22 +53,11 @@ const mutations = {
 };
 
 const actions = {
-  async [DriversActions.GET_DRIVERS]({ commit }: any, filters: any) {
+  async [DriversActions.GET_DRIVERS]({ commit }: any) {
     try {
       commit(DriversActions.SET_LOADING, true);
 
-      // const DateFrom = filters.DateFrom || format(new Date());
-      // const DateTo = filters.DateTo || format(new Date());
-      // const filtersData = {
-      //   ...filters,
-      //   DateFrom,
-      //   DateTo,
-      //   page: filters.page || 0,
-      //   perPage: filters.perPage || 10,
-      //   alloc_type: filters.alloc_type,
-      // };
-
-      const drivers = await getDrivers();
+      const drivers = getDrivers();
 
       commit(DriversActions.SET_DRIVERS, drivers || []);
       commit(DriversActions.SET_DRIVERS_FOR_VIEW, drivers || []);
@@ -88,7 +76,7 @@ const actions = {
     try {
       commit(DriversActions.SET_FORM_LOADING, true);
 
-      await createDriver(payload);
+      createDriver(payload);
       router.push({ name: "driversList" });
       toast.success("Водій успішно створено!");
 
@@ -104,7 +92,7 @@ const actions = {
     try {
       commit(DriversActions.SET_FORM_LOADING, true);
 
-      await changeDriverTransport(payload);
+      changeDriverTransport(payload);
       toast.success("Транспорт успішно змінено!");
 
       commit(DriversActions.SET_FORM_LOADING, false);
@@ -119,7 +107,7 @@ const actions = {
     try {
       commit(DriversActions.SET_FORM_LOADING, true);
 
-      await changerDriverRoute(payload);
+      changerDriverRoute(payload);
       toast.success("Маршрут успішно змінено!");
 
       commit(DriversActions.SET_FORM_LOADING, false);
