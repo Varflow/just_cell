@@ -17,7 +17,7 @@
   </button>
 </template>
 <script setup lang="ts">
-import { ButtonHTMLAttributes } from "vue";
+import { ButtonHTMLAttributes, defineComponent } from "vue";
 
 type ButtonVariants = "primary" | "secondary" | "success" | "ghost" | "error";
 
@@ -45,7 +45,6 @@ withDefaults(defineProps<ButtonProps>(), {
 </script>
 
 <script lang="ts">
-import { defineComponent } from "vue";
 import VSpinner from "@/components/spinner/VSpinner.vue";
 export default defineComponent({
   emits: ["click"],

@@ -25,7 +25,7 @@ onMounted(() => {
 <style lang="scss" scoped>
 .branches-list {
   display: grid;
-  grid-template-columns: 1f;
+  grid-template-columns: 1fr;
   grid-template-rows: repeat(auto-fill, 1fr);
   row-gap: 20px;
 }
