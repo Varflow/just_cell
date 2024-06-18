@@ -1,10 +1,4 @@
-import {
-  MENU_ICONS_KEY,
-  MENU_STORE_KEY,
-  RULES_STORAGE_KEY,
-  TOKEN_STORE_KEY,
-  USER_STATE_KEY,
-} from "@/contants/storage";
+import { RULES_STORAGE_KEY, USER_STATE_KEY } from "@/contants/storage";
 import { User } from "./user.model";
 
 export const saveUserToSession = (user: User) => {
