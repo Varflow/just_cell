@@ -21,5 +21,3 @@ import ProductsActions from "../ui/ProductsActions.vue";
 import ProductFilters from "../ui/filters/ProductFilters.vue";
 import ProductsList from "../ui/ProductsList.vue";
 </script>
-
-<style lang="scss"></style>

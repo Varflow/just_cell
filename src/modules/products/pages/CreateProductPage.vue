@@ -15,5 +15,3 @@ import AppLoading from "@/components/layout/AppLoading/AppLoading.vue";
 
 import ProductForm from "../ui/form/ProductForm.vue";
 </script>
-
-<style lang="scss"></style>
