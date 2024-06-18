@@ -81,8 +81,7 @@ export default defineComponent({
     },
     values: {
       handler(value) {
-        console.log(value);
-        if (!value || !value.length) {
+        if (!value?.length) {
           return;
         }
         this.fieldValues = value;

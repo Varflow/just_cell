@@ -33,9 +33,7 @@ export default {
 
   transform: translateZ(0);
   animation: loading 1.1s infinite linear;
-}
 
-.loader {
   &--sm {
     font-size: 10px;
     &:after {

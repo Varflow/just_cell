@@ -39,7 +39,7 @@ export default defineComponent({
       return this.$store.state.terminals.terminalsRef;
     },
     addDataFields(): any[] {
-      if (!this.terminalRef || !this.terminalRef.add_data_fields) {
+      if (!this.terminalRef?.add_data_fields) {
         return [];
       }
 

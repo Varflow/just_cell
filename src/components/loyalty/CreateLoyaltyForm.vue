@@ -24,11 +24,6 @@
               <input-field placeholder="Наприклад, 300" />
             </form-field>
 
-            <!-- <form-field label="Введіть номер карти">
-              <card-field name="card_number" />
-            </form-field>
-            <v-caption> або знайдіть картку за номером телефону </v-caption>
-            <card-select /> -->
             <terminals-select />
             <companies-select />
           </div>
@@ -104,37 +99,16 @@ import FormField from "@/components/fields/FormField/FormField.vue";
 import InputField from "@/components/fields/InputField/InputField.vue";
 import CheckboxField from "@/components/fields/CheckboxField/CheckboxField.vue";
 import VButton from "@/components/buttons/BaseButton/BaseButton.vue";
-import VCaption from "../layout/Caption/VCaption.vue";
-// import CardField from "@/components/fields/CardField/CardField.vue";
-import CardSelect from "@/components/fields/CardSelect/CardSelect.vue";
 import FormTitle from "../form/FormTitle.vue";
 
 import TerminalsSelect from "../terminals/fields/TerminalsSelect.vue";
 import CompaniesSelect from "../fields/CompaniesSelectField/CompaniesSelect.vue";
 
 import { useToast } from "vue-toastification";
-// import { TerminalsActions } from "@/store/modules/terminals";
 
 const createInitialData = (id: string) => ({
   id,
   all_terms: false,
-  //   name: "Name",
-  //   settings: "",
-  //   max_offline_sum: 0,
-  //   is_default_offline: false,
-  //   is_for_all_card: true,
-  //   can_user_add_card: false,
-  //   endpoint_result: "",
-  //   add_get: "",
-  //   headers: "",
-  //   payload: "",
-  //   sign_stract: "",
-  //   card_wait: 30,
-  //   req_type: "",
-  //   need_shift: false,
-  //   sync_type: "",
-  //   sync_period: 30,
-  //   update_all_term: false,
 });
 
 export default defineComponent({
@@ -155,9 +129,6 @@ export default defineComponent({
     VForm,
     VTab,
     VTabs,
-    // VCaption,
-    // CardField,
-    // CardSelect,
     TerminalsSelect,
     CompaniesSelect,
     CheckboxField,
@@ -174,16 +145,6 @@ export default defineComponent({
       initialValues: createInitialData(""),
     };
   },
-
-  mounted() {
-    // this.$store.dispatch(TerminalsActions.GET_TERMINALS_REF);
-  },
-
-  //   computed: {
-  //     loading(): boolean {
-  //       return this.$store.state.terminals.formLoading;
-  //     },
-  //   },
 
   methods: {
     submitLoyalty(values: any) {

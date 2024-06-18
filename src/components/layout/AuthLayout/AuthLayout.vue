@@ -6,7 +6,6 @@
     <div class="auth-layout__content">
       <div class="auth-layout__header">
         <div class="auth-layout__logo">
-          <!-- <img src="@/assets/logo.png" alt="Just sell" /> -->
           <app-logo />
         </div>
         <div class="auth-layout__header-link">

@@ -3,7 +3,6 @@
   <table
     v-else
     border="0"
-    rules="none"
     class="table"
     :class="{ 'table--empty': empty }"
     aria-describedby="data visualized in a table format"

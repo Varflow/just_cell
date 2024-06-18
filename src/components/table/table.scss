@@ -38,8 +38,7 @@
   &-tbody {
     @include table-spacing(10);
   }
-  &-thead {
-  }
+
   &-tr {
     display: flex;
     justify-content: space-between;
@@ -58,8 +57,6 @@
         width: 12px;
       }
     }
-  }
-  &-td {
   }
 
   &-row {

@@ -24,7 +24,7 @@ export default defineComponent({
 
   watch: {
     exportData(value) {
-      if (!value || !value.length) {
+      if (!value?.length) {
         return;
       }
       const wb = utils.book_new();
