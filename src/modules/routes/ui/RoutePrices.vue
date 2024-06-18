@@ -61,7 +61,7 @@ export default defineComponent({
   watch: {
     places: {
       handler(value) {
-        if (!value || !value.length) {
+        if (!value?.length) {
           return;
         }
         this.options = value.map((place: any) => ({

@@ -14,7 +14,6 @@ import AppLoading from "@/components/layout/AppLoading/AppLoading.vue";
 import TerminalForm from "@/components/terminals/CreateEcommTerminalForm.vue";
 
 import { TerminalsActions } from "@/store/modules/terminals";
-// import { OfflineTerminalPayload } from "@/api/terminals/terminal.model";
 
 export default defineComponent({
   components: {
@@ -27,9 +26,6 @@ export default defineComponent({
     loading() {
       return this.$store.state.terminals.loading;
     },
-    // configData(): OfflineTerminalPayload {
-    //   return this.$store.state.terminals.terminalConfig;
-    // },
   },
 
   mounted() {

@@ -16,18 +16,6 @@
           <form-field shadow label="Пароль ключа*:">
             <password-field name="password" v-model="values.pass" />
           </form-field>
-          <!-- <form-field shadow label="В який час закривати зміну*:">
-            <timepicker-field v-model="values.time" />
-          </form-field>
-          <form-field
-            label="В які дні автоматично формувати Z-звіт та закривати зміну*:"
-          >
-            <schedule-field
-              name="checkbox"
-              label="ПН"
-              v-model="values.schedule"
-            />
-          </form-field> -->
         </div>
       </div>
       <v-button type="submit">
@@ -43,10 +31,8 @@ import { defineComponent } from "vue";
 import VForm from "@/components/form/VForm.vue";
 import FormField from "@/components/fields/FormField/FormField.vue";
 import InputField from "@/components/fields/InputField/InputField.vue";
-import ScheduleField from "@/components/fields/ScheduleField/ScheduleField.vue";
 import FileField from "@/components/fields/FileField/FileField.vue";
 import PasswordField from "@/components/fields/PasswordField/PasswordField.vue";
-import TimepickerField from "@/components/fields/TimepickerField/TimepickerField.vue";
 import VButton from "@/components/buttons/BaseButton/BaseButton.vue";
 
 export default defineComponent({
@@ -56,10 +42,8 @@ export default defineComponent({
     FormField,
     VForm,
     VButton,
-    // ScheduleField,
     FileField,
     PasswordField,
-    // TimepickerField,
   },
 
   data() {
@@ -75,12 +59,9 @@ export default defineComponent({
   },
 
   methods: {
-    onSubmit(values: any) {
+    onSubmit() {
       this.$router.push({ name: "fiscalAdd" });
-      // this.$emit("upload");
     },
   },
 });
 </script>
-
-<style lang="scss" scoped></style>

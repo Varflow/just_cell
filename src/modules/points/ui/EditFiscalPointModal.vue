@@ -70,11 +70,6 @@
           </v-form>
         </div>
       </div>
-      <!-- <div class="modal-actions">
-        <v-button :has-max-width="false" @click="close" variant="success">
-          <template #text>Так</template>
-        </v-button>
-      </div> -->
     </template>
   </v-modal>
 </template>

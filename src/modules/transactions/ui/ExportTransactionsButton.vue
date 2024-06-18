@@ -55,7 +55,7 @@ export default defineComponent({
           (field) => field.alloc_type === this.allocType
         );
 
-        if (!fields || !fields.length) {
+        if (!fields?.length) {
           return [];
         }
 
@@ -93,5 +93,3 @@ export default defineComponent({
   },
 });
 </script>
-
-<style lang="scss" scoped></style>

@@ -44,8 +44,7 @@ export default defineComponent({
   watch: {
     values: {
       handler(value) {
-        console.log(value);
-        if (!value.value || !value.value.length) {
+        if (!value?.value?.length) {
           return;
         }
         this.records = value.value;

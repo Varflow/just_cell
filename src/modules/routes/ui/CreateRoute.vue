@@ -1,9 +1,6 @@
 <template>
   <app-layout>
     <template #appTitle>Додати маршрут</template>
-    <!-- <template #appSubtitle v-if="!canEdit"
-        >Ви не маєте прав для редагування налаштувань терміналу</template
-      > -->
     <template #appLoading>
       <app-loading :loading="false" />
     </template>
@@ -40,9 +37,6 @@ export default defineComponent({
     loading(): boolean {
       return this.$store.state.routes.loading;
     },
-    // configData(): OfflineTerminalPayload {
-    //   return this.$store.state.terminals.terminalConfig;
-    // },
   },
 
   async mounted() {

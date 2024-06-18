@@ -22,23 +22,6 @@
             v-model="values.jon"
           />
         </form-field>
-
-        <!-- <form-field shadow label="Точка роботи*:">
-        <select-field
-          name="name"
-          inputPlaceholder="Оберіть точку"
-          searchPlaceholder="Точка"
-          :options="options"
-        />
-      </form-field> -->
-        <!-- <form-field shadow label="Точки, до яких користувач має доступ*:">
-        <select-field
-          name="name"
-          inputPlaceholder="Оберіть точку"
-          searchPlaceholder="Точка"
-          :options="options"
-        />
-      </form-field> -->
         <affiliation-select />
         <form-field shadow label="ЄДРПОУ:">
           <input-field

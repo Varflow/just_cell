@@ -1,9 +1,5 @@
 <template lang="">
-  <v-table :data="data" :columns="columns" :empty="empty" :total="total">
-    <!-- <template #context-menu="{ values }">
-      <terminal-actions :terminal="values" />
-    </template> -->
-  </v-table>
+  <v-table :data="data" :columns="columns" :empty="empty" :total="total" />
 </template>
 <script setup lang="ts">
 import { expandedButton } from "@/components/table/ExpandedButton";

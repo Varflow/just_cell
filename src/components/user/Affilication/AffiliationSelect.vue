@@ -13,10 +13,6 @@
         <affiliation-form @success="onAdd" />
       </template>
     </select-field>
-    <!-- <template #hint>
-      Дає змогу налаштувати синхронізацію чорних списків (банківські карти по
-      яким не пройшла оплата) між учасниками системи JustSell
-    </template> -->
   </form-field>
 </template>
 <script lang="ts">
@@ -42,19 +38,6 @@ export default defineComponent({
     return {
       affilications: [{ value: "1", label: "Company 1" }],
     };
-  },
-
-  computed: {
-    // affilications(): { value: string; label: string }[] {
-    //   const ref: TerminalRef = this.$store.state.terminals.terminalsRef;
-    //   if (!ref) {
-    //     return [];
-    //   }
-    //   return ref.parent_child.map((type) => ({
-    //     value: type.id.toString(),
-    //     label: type.name || "",
-    //   }));
-    // },
   },
 
   methods: {

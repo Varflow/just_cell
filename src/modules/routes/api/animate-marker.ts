@@ -32,29 +32,6 @@ export const animateTo = async (
       })(i);
     }
   });
-
-  // return new Promise((resolve) => {
-  //   const deltalat = (moveTo.lat() - moveFrom.lat()) / delta;
-  //   const deltalng = (moveTo.lng() - moveFrom.lng()) / delta;
-  //   const delay = 10 * t;
-  //   let count = 0;
-
-  //   function animate() {
-  //     const lat = marker.position.lat() + deltalat;
-  //     const lng = marker.position.lng() + deltalng;
-
-  //     marker.setPosition(new window.google.maps.LatLng(lat, lng));
-
-  //     count++;
-  //     if (count < delta) {
-  //       requestAnimationFrame(animate);
-  //     } else {
-  //       resolve(marker);
-  //     }
-  //   }
-
-  //   animate();
-  // });
 };
 
 export const clearTimeouts = async (): Promise<boolean> => {

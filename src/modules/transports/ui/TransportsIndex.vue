@@ -6,8 +6,6 @@
 
     <template #appTitle>Перегляд транспортних засобів</template>
     <template #appExtra>
-      <!-- <div class="terminals-extra-actions">
-      </div> -->
       <create-transport-button />
     </template>
     <template #appContent>
@@ -52,5 +50,3 @@ export default defineComponent({
   },
 });
 </script>
-
-<style lang="scss" scoped></style>

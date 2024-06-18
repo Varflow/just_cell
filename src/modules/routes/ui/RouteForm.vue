@@ -110,7 +110,6 @@ export default defineComponent({
   computed: {
     loading(): boolean {
       return false;
-      // return this.$store.state.transport.loading;
     },
   },
 

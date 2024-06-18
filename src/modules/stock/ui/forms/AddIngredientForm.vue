@@ -65,9 +65,6 @@ const onSubmit = (values: any) => {
   padding: 0 12px;
 }
 
-.ingredient-select__container {
-}
-
 .ingredient-divider {
   font-size: 16px;
   font-weight: 500;

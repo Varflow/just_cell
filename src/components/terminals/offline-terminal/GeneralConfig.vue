@@ -23,7 +23,6 @@
       placeholder="Введіть максимальну суму для оффлайн платежу"
     />
   </form-field>
-  <!-- <alloc-type-field v-model="values.allocation_type" /> -->
   <form-field
     label="Ідентифікатор ПТКС"
     :error="errors.ptks_num"
@@ -142,18 +141,6 @@
       отримання даних
     </template>
   </form-field>
-  <!-- <form-field label="Додаткова інформація">
-    <textarea-field
-      v-model="values.add_data"
-      :maxLength="1500"
-      placeholder="Введіть додадкову інформацію"
-    />
-    <template #hint>
-      Будь-які додаткові дані, які необхідні для роботи або інтеграції з іншими
-      додатками, наприклад, токен для авторизації на сторонньому сервері. Їх
-      можна отримувати на самому терміналі запитом /Config/get
-    </template>
-  </form-field> -->
 </template>
 <script lang="ts">
 import { defineComponent } from "vue";
@@ -166,7 +153,6 @@ import PayloadField from "@/components/terminals/fields/PayloadTemplateField.vue
 import FormTitle from "@/components/form/FormTitle.vue";
 import PasswordField from "../../fields/PasswordField/PasswordField.vue";
 
-import AllocTypeField from "../fields/AllocTypeField.vue";
 import SignStractField from "../fields/SignStractField.vue";
 import SettingsSelect from "../fields/SettingsSelect.vue";
 import RequestMethodSelect from "../fields/RequestMethodSelect.vue";
@@ -189,7 +175,6 @@ export default defineComponent({
     SignStractField,
     FormTitle,
     PasswordField,
-    // AllocTypeField,
   },
 
   data() {

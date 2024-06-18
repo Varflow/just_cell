@@ -30,5 +30,3 @@ import FormField from "@/components/fields/FormField/FormField.vue";
 import InputField from "@/components/fields/InputField/InputField.vue";
 import VButton from "@/components/buttons/BaseButton/BaseButton.vue";
 </script>
-
-<style lang="scss" scoped></style>
