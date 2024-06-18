@@ -1,4 +1,3 @@
-import { format } from "@/components/fields/DatepickerField/format";
 import { Route } from "../models/routes";
 import { createRoute, getRoute, getRoutes } from "../api/routes.api";
 import router from "@/app/router";
@@ -44,22 +43,11 @@ const mutations = {
 };
 
 const actions = {
-  async [RoutesActions.GET_ROUTES]({ commit }: any, filters: any) {
+  async [RoutesActions.GET_ROUTES]({ commit }: any) {
     try {
       commit(RoutesActions.SET_LOADING, true);
 
-      // const DateFrom = filters.DateFrom || format(new Date());
-      // const DateTo = filters.DateTo || format(new Date());
-      // const filtersData = {
-      //   ...filters,
-      //   DateFrom,
-      //   DateTo,
-      //   page: filters.page || 0,
-      //   perPage: filters.perPage || 10,
-      //   alloc_type: filters.alloc_type,
-      // };
-
-      const routes = await getRoutes();
+      const routes = getRoutes();
 
       commit(RoutesActions.SET_ROUTES, routes || []);
 
@@ -85,7 +73,7 @@ const actions = {
     try {
       commit(RoutesActions.SET_FORM_LOADING, true);
 
-      await createRoute(payload);
+      createRoute(payload);
       router.push({ name: "transportList" });
       toast.success("Маршрут успішно створено!");
 
