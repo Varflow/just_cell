@@ -25,3 +25,4 @@ ENV PROJECT=${project}
 COPY --from=builder /opt/${PROJECT}/dist /opt/${PROJECT}
 #COPY nginx-config/nginx.conf /etc/nginx/nginx.conf
 #COPY nginx-config/default.conf /etc/nginx/conf.d/default.conf
+
