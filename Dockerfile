@@ -12,7 +12,7 @@ COPY . /opt/${PROJECT}/
 
 RUN node --version
 RUN ls -la /opt/${PROJECT}
-RUN yarn && yarn build
+RUN yarn && yarn build:staging
 RUN ls -la /opt/${PROJECT}
 
 FROM ${CI_REGISTRY}/utils/alpine-utils:${ALPINE_TAG}-nginx
