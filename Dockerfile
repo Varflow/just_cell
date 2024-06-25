@@ -22,9 +22,6 @@ ARG project
 
 ENV PROJECT=${project}
 
-COPY --from=builder /opt/${PROJECT}/build /opt/${PROJECT}
+COPY --from=builder /opt/${PROJECT}/dist /opt/${PROJECT}
 #COPY nginx-config/nginx.conf /etc/nginx/nginx.conf
 #COPY nginx-config/default.conf /etc/nginx/conf.d/default.conf
-
-#RUN rm -rf /opt/${PROJECT}/.git && rm -rf /opt/${PROJECT}/Dockerfile.ugb && rm -rf /opt/${PROJECT}/nginx-config
-
