@@ -14,6 +14,7 @@ RUN node --version
 RUN ls -la /opt/${PROJECT}
 RUN yarn && yarn build:staging
 RUN ls -la /opt/${PROJECT}
+RUN ls -la /opt/${PROJECT}/dist
 
 FROM ${CI_REGISTRY}/utils/alpine-utils:${ALPINE_TAG}-nginx
 
