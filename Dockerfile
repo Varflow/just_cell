@@ -26,3 +26,4 @@ COPY --from=builder /opt/${PROJECT}/build /opt/${PROJECT}
 #COPY nginx-config/default.conf /etc/nginx/conf.d/default.conf
 
 #RUN rm -rf /opt/${PROJECT}/.git && rm -rf /opt/${PROJECT}/Dockerfile.ugb && rm -rf /opt/${PROJECT}/nginx-config
+
