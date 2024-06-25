@@ -1,0 +1,5 @@
+include:
+  - project: pub/pipelines
+    ref: main
+    file:
+      - project-build-common.yaml
