@@ -1,24 +1,8 @@
-# just_sell
-
-## Project setup
-```
-yarn install
-```
-
-### Compiles and hot-reloads for development
-```
-yarn serve
-```
-
-### Compiles and minifies for production
-```
-yarn build
-```
-
-### Lints and fixes files
-```
-yarn lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+1. Для корректной работы должна быть установлена
+   - Node.js >  v18.20.0
+   - NPM > 9.8.1
+2. Установить npm зависимости `npm install`
+3. Сборка проекта для production вызывается командой. Проект собирается в папку **dist** `npm run build:prod`
+4. Сборка проекта для тестовой версии вызывается командой. Проект собирается в папку dist `npm run build:staging`
+5. Настройки проекта для production сборки хранятся в **.env.production**
+6. Настройки проекта для тестовой сборки хранятся в **.env.staging**
