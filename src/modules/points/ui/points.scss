@@ -1,3 +1,15 @@
+.points-list__empty {
+  width: 100%;
+  height: 50vh;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &-title {
+  }
+}
+
 .points-list {
   display: grid;
   grid-auto-flow: row;
@@ -31,6 +43,10 @@
       margin-bottom: 16px;
       white-space: collapse;
       word-wrap: break-word;
+    }
+
+    &__checkbox {
+      width: 44%;
     }
   }
 

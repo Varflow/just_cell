@@ -7,14 +7,14 @@
             <file-field
               name="file"
               label="Ключ для підпису*:"
-              v-model="values.key"
+              v-model="values.file"
             />
           </form-field>
           <form-field shadow label="Фіскальний номер реєстратора*:">
-            <input-field name="name" v-model="values.num" />
+            <input-field name="name" v-model="values.fiscal_num" />
           </form-field>
           <form-field shadow label="Пароль ключа*:">
-            <password-field name="password" v-model="values.pass" />
+            <password-field name="password" v-model="values.fiscal_pass" />
           </form-field>
         </div>
       </div>
@@ -25,8 +25,8 @@
   </v-form>
 </template>
 
-<script lang="ts">
-import { defineComponent } from "vue";
+<script setup lang="ts">
+import { reactive, defineEmits } from "vue";
 
 import VForm from "@/components/form/VForm.vue";
 import FormField from "@/components/fields/FormField/FormField.vue";
@@ -35,33 +35,16 @@ import FileField from "@/components/fields/FileField/FileField.vue";
 import PasswordField from "@/components/fields/PasswordField/PasswordField.vue";
 import VButton from "@/components/buttons/BaseButton/BaseButton.vue";
 
-export default defineComponent({
-  emits: ["upload"],
-  components: {
-    InputField,
-    FormField,
-    VForm,
-    VButton,
-    FileField,
-    PasswordField,
-  },
+import { PointsRequest } from "../model/points-request";
+import { usePointsStore } from "../store/points.store";
 
-  data() {
-    return {
-      initialValues: {
-        key: null,
-        num: "",
-        pass: "",
-        time: "00:00",
-        schedule: "",
-      },
-    };
-  },
+const initialValues = reactive({ file: null, fiscal_num: "", fiscal_pass: "" });
 
-  methods: {
-    onSubmit() {
-      this.$router.push({ name: "fiscalAdd" });
-    },
-  },
-});
+const onSubmit = (values: PointsRequest) => {
+  const pointsStore = usePointsStore();
+
+  pointsStore.uploadFiscalKey(values);
+};
+
+defineEmits(["upload"]);
 </script>

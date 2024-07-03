@@ -14,4 +14,7 @@ export enum ApiRoutes {
   SCAN_QR = "Terminals/Scan/index.php",
   SEND_TERMINAL_COMMAMD = "Terminals/AddCmd/index.php",
   ECOMM_TERMINAL_REF = "Terminals/Ecomm/Ref/index.php",
+
+  UPLOAD_FISCAL_KEY = "Points/KeyData/index.php",
+  ADD_POINT = "Points/Add/index.php",
 }
